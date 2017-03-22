@@ -12,5 +12,6 @@ namespace iOSEventosDemo
 
             return Validation.ValidateInput(replacementString,Validation.ValitationType.User);
         }
+
     }
 }

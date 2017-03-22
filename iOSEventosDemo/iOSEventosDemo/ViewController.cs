@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Foundation;
+using System;
 
 using UIKit;
 
@@ -19,6 +20,8 @@ namespace iOSEventosDemo
 			btnStart.AccessibilityIdentifier = "myButton";
 			btnStart.TouchUpInside += BtnStart_TouchUpInside;
             txtUser.Delegate = new UITextFieldUserValidationDelegate();
+            txtPass.WeakDelegate = this;
+            txtCode.WeakDelegate = this;
 			
 		}
 
@@ -46,5 +49,17 @@ namespace iOSEventosDemo
 				btnStart.TouchUpInside += (sen, eve) => this.ShowPopup(message, title);
 			}
 		}
-	}
+
+        [Export("textField:shouldChangeCharactersInRange:replacementString:")]
+        public bool ShouldChangeCharacters(UITextField textField, Foundation.NSRange range, string replacementString)
+        {
+           if (textField.Equals(txtPass))
+                return Validation.ValidateInput(replacementString, Validation.ValitationType.Password);
+           else
+                return Validation.ValidateInput(replacementString, Validation.ValitationType.Code);
+        }
+
+       
+
+    }
 }

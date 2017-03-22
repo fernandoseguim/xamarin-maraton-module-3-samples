@@ -27,7 +27,6 @@ namespace iOSEventosDemo
                 case ValitationType.Code:
                     result = text.ToLower().All(c => validCodeChars.Contains(c));
                     break;
-
             }
 
             return result;
