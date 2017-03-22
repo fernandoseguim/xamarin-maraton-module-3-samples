@@ -18,6 +18,7 @@ namespace iOSEventosDemo
 
 			btnStart.AccessibilityIdentifier = "myButton";
 			btnStart.TouchUpInside += BtnStart_TouchUpInside;
+            txtUser.Delegate = new UITextFieldUserValidationDelegate();
 			
 		}
 
